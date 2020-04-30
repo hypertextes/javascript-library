@@ -1,0 +1,44 @@
+{
+  "name": "@hypertextes/javascript-library",
+  "version": "0.0.0",
+  "description": "Javascript Library",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@hypertextes.github.com:hypertextes/javascript-library.git"
+  },
+  "keywords": [],
+  "author": "hypertextes <contact@hypertextes.me>",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@ava/babel": "1.0.1",
+    "ava": "3.8.1",
+    "conventional-changelog-cli": "2.0.31",
+    "cz-conventional-changelog": "3.1.0",
+    "eslint": "6.8.0",
+    "eslint-config-standard": "14.1.1",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.1",
+    "husky": "4.2.5",
+    "nyc": "15.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "ava": {
+    "babel": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "eslint lib/**/*.js",
+      "pre-push": "nyc ava"
+    }
+  },
+  "scripts": {
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
+  }
+}
